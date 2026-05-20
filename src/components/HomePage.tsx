@@ -15,8 +15,9 @@ export function HomePage({ onNavigate }: HomePageProps) {
             <p className="eyebrow">Begleitplattform zum Buch</p>
             <h1 className="hero-title">
               <span className="title-line">Interaktive</span>
-              <span className="title-line">Mathematik für</span>
-              <span className="title-line title-line--keep">die (Bio-)Chemie</span>
+              <span className="title-line">Mathematik</span>
+              <span className="title-line title-line--keep">für die</span>
+              <span className="title-line title-line--keep">(Bio-)Chemie</span>
             </h1>
             <p className="hero-copy">
               Ein digitales Mathematik-Labor für Standardaufgaben aus dem naturwissenschaftlichen Grundstudium:
