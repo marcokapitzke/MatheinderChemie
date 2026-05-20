@@ -87,7 +87,7 @@ a {
 
 .brand,
 .nav-links button,
-.nav-note,
+.visitor-counter,
 .quiet-link,
 .button,
 .icon-button,
@@ -118,7 +118,7 @@ a {
 }
 
 .nav-links button,
-.nav-note {
+.visitor-counter {
   border: 0;
   background: transparent;
   color: var(--muted);
@@ -133,12 +133,25 @@ a {
   background: var(--blue-soft);
 }
 
-.nav-note {
+.visitor-counter {
   display: inline-flex;
   align-items: center;
-  gap: 0.42rem;
+  justify-content: center;
+  gap: 0.38rem;
   border: 1px solid var(--line-strong);
   background: rgba(255, 255, 255, 0.68);
+  white-space: nowrap;
+  font-size: 0.8rem;
+  letter-spacing: 0.01em;
+}
+
+.visitor-counter strong {
+  color: var(--bordeaux);
+  font-weight: 850;
+}
+
+.visitor-counter--ghost {
+  visibility: hidden;
 }
 
 .home-hero {
@@ -166,6 +179,7 @@ a {
   margin: 0;
   font-family: var(--serif);
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 .hero-text h1,
@@ -202,6 +216,13 @@ a {
 .home-hero .hero-copy {
   color: rgba(248, 251, 255, 0.76);
   font-size: 1.22rem;
+}
+
+.hero-copy,
+.purpose-band p,
+.module-card p,
+.quality-grid span {
+  text-wrap: pretty;
 }
 
 .hero-actions {
@@ -364,10 +385,6 @@ a {
   color: var(--muted);
 }
 
-.quality-section {
-  padding: 4.4rem 0 1rem;
-}
-
 .quality-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -412,9 +429,74 @@ a {
   color: var(--muted);
 }
 
-.module-section,
+.module-section {
+  padding: 4.8rem 0 2.2rem;
+}
+
 .module-page .calculator-grid {
   padding: 5.5rem 0;
+}
+
+.quality-section {
+  padding: 0 0 5rem;
+}
+
+.quality-disclosure {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 14px 46px rgba(9, 33, 63, 0.055);
+  overflow: hidden;
+}
+
+.quality-disclosure summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 86px;
+  padding: 1rem 1.1rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.quality-disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.quality-disclosure summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  color: var(--bordeaux);
+  font-weight: 850;
+}
+
+.quality-disclosure[open] summary::after {
+  content: "−";
+}
+
+.quality-disclosure summary strong {
+  display: block;
+  color: var(--blue);
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 2.1vw, 2rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.quality-disclosure .eyebrow {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+.quality-disclosure .quality-grid {
+  padding: 0 1rem 1rem;
 }
 
 .module-page {
@@ -486,7 +568,7 @@ a {
 
 .module-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   border-top: 1px solid var(--line-strong);
   border-left: 1px solid var(--line-strong);
 }
@@ -508,10 +590,6 @@ a {
   overflow: hidden;
   isolation: isolate;
   transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
-}
-
-.module-card--plotter {
-  grid-column: span 2;
 }
 
 .module-card::before {
@@ -608,6 +686,10 @@ a {
   font-family: var(--serif);
   font-size: 1.42rem;
   line-height: 1.12;
+}
+
+.module-card--plotter h3 {
+  font-size: 1.28rem;
 }
 
 .title-line {
@@ -765,6 +847,8 @@ select {
   border-radius: 6px;
   background: #fbfcff;
   color: var(--ink);
+  font: inherit;
+  font-weight: 500;
   padding: 0.72rem 0.8rem;
 }
 
@@ -1127,22 +1211,34 @@ input[type="range"] {
 
 .formula-point-list {
   display: grid;
-  gap: 0.5rem;
+  gap: 0.62rem;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .formula-point-list li {
+  display: grid;
+  gap: 0.28rem;
   border: 1px solid var(--blue-soft);
   border-radius: 6px;
-  background: #f8fbff;
-  padding: 0.58rem 0.65rem;
+  background:
+    linear-gradient(90deg, rgba(9, 33, 63, 0.035), transparent),
+    #f8fbff;
+  padding: 0.7rem 0.74rem;
+}
+
+.formula-point-list strong {
+  color: var(--bordeaux);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
 }
 
 .formula-point-list .math-formula {
   color: var(--blue);
-  font-size: 0.96rem;
+  font-size: 0.98rem;
 }
 
 .interval-grid,
@@ -1297,7 +1393,7 @@ input[type="range"] {
   }
 
   .brand,
-  .nav-note {
+  .visitor-counter {
     justify-self: start;
   }
 
@@ -1309,10 +1405,6 @@ input[type="range"] {
 
   .module-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .module-card--plotter {
-    grid-column: auto;
   }
 
   .hero-grid,
@@ -1406,7 +1498,7 @@ input[type="range"] {
 
 @media (max-width: 460px) {
   .nav-links button,
-  .nav-note {
+  .visitor-counter {
     font-size: 0.84rem;
   }
 

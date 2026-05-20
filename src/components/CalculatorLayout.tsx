@@ -80,6 +80,7 @@ function renderPageTitle(route: RouteId, title: string) {
   return (
     <>
       <span className="title-line title-line--keep">Funktionsplotter&nbsp;&amp;</span>
+      {" "}
       <span className="title-line">Kurvendiskussion</span>
     </>
   );

@@ -128,7 +128,9 @@ function AnalysisList({ title, points }: { title: string; points: PointResult[] 
         <ul className="formula-point-list">
           {points.map((point) => (
             <li key={`${point.kind}-${point.x}-${point.y}`}>
-              <MathFormula tex={pointToTex(point)} />
+              <strong>{point.kind}</strong>
+              <MathFormula tex={`x\\approx ${formatNumber(point.x)}`} />
+              <MathFormula tex={`f(x)\\approx ${formatNumber(point.y)}`} />
             </li>
           ))}
         </ul>
@@ -137,8 +139,4 @@ function AnalysisList({ title, points }: { title: string; points: PointResult[] 
       )}
     </article>
   );
-}
-
-function pointToTex(point: PointResult) {
-  return `\\text{${point.kind}:}\\quad x\\approx ${formatNumber(point.x)},\\; f(x)\\approx ${formatNumber(point.y)}`;
 }

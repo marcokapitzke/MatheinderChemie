@@ -13,6 +13,8 @@ Interaktive, deutschsprachige Begleitplattform zum Buch **Mathematik für Bioche
 
 Die Eingabe akzeptiert `exp(x)` und `e^x`; die Ausgabe folgt der Buchnotation mit `exp(x)`.
 
+Der Rechner selbst benötigt kein Backend. Nur der dezente Besucherzähler in der Navigation nutzt einen kostenlosen öffentlichen CounterAPI-Endpunkt und zählt höchstens einmal pro Browser-Tab-Sitzung.
+
 ## Lokal starten
 
 ```bash

@@ -8,6 +8,7 @@ Diese Plattform ist bewusst konservativ. Sie soll typische Grundstudiumsaufgaben
 - Mehrdimensionale Funktionen, Parameterfamilien und implizite Gleichungen sind nicht Teil dieses Rechners.
 - Numerische Ergebnisse werden als Näherungen behandelt.
 - Definitionslücken und Polstellen werden im Plot abgefangen, aber nicht vollständig symbolisch klassifiziert.
+- Der Besucherzähler ist ein öffentliches, kostenloses CounterAPI-Detail und kein eigenes Analytics-System. Er zählt pro Browser-Tab-Sitzung und wird ausgeblendet, falls der Dienst nicht erreichbar ist.
 
 ## Ableitungen
 

@@ -13,7 +13,11 @@ export function HomePage({ onNavigate }: HomePageProps) {
         <div className="section-shell hero-grid">
           <div className="hero-text">
             <p className="eyebrow">Begleitplattform zum Buch</p>
-            <h1>Interaktive Mathematik für die (Bio-)Chemie</h1>
+            <h1 className="hero-title">
+              <span className="title-line">Interaktive</span>
+              <span className="title-line">Mathematik für</span>
+              <span className="title-line title-line--keep">die (Bio-)Chemie</span>
+            </h1>
             <p className="hero-copy">
               Ein digitales Mathematik-Labor für Standardaufgaben aus dem naturwissenschaftlichen Grundstudium:
               visuell klar, interaktiv und nah an typischen Rechenwegen.
@@ -50,30 +54,6 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </a>
       </section>
 
-      <section className="section-shell quality-section" aria-labelledby="quality-title">
-        <div className="section-heading">
-          <p className="eyebrow">Engineering-Qualität</p>
-          <h2 id="quality-title">Gebaut wie ein wissenschaftliches Werkzeug.</h2>
-        </div>
-        <div className="quality-grid">
-          <article>
-            <ShieldCheck size={22} />
-            <strong>4.995 generierte Prüffälle</strong>
-            <span>Ableitungen, Integrale, komplexe Zahlen, Kurvendiskussion und Konvergenz werden gegen unabhängige mathematische Invarianten geprüft.</span>
-          </article>
-          <article>
-            <BrainCircuit size={22} />
-            <strong>Kontrolle statt blindem Symbolrechnen</strong>
-            <span>Stammfunktionen werden per Rückableitung kontrolliert; bestimmte Integrale erhalten zusätzlich einen numerischen Stabilitätscheck.</span>
-          </article>
-          <article>
-            <Cpu size={22} />
-            <strong>Browser-only Architektur</strong>
-            <span>Keine Server, keine Bezahldienste, kein Backend: React, TypeScript, KaTeX, Plotly und deterministische Mathematik im Browser.</span>
-          </article>
-        </div>
-      </section>
-
       <section className="section-shell module-section" aria-labelledby="module-title">
         <div className="section-heading">
           <p className="eyebrow">Module</p>
@@ -96,6 +76,34 @@ export function HomePage({ onNavigate }: HomePageProps) {
           ))}
         </div>
       </section>
+
+      <section className="section-shell quality-section">
+        <details className="quality-disclosure">
+          <summary>
+            <span>
+              <span className="eyebrow">Engineering-Qualität</span>
+              <strong>Gebaut wie ein wissenschaftliches Werkzeug.</strong>
+            </span>
+          </summary>
+          <div className="quality-grid">
+            <article>
+              <ShieldCheck size={22} />
+              <strong>4.995 generierte Prüffälle</strong>
+              <span>Ableitungen, Integrale, komplexe Zahlen, Kurvendiskussion und Konvergenz werden gegen unabhängige mathematische Invarianten geprüft.</span>
+            </article>
+            <article>
+              <BrainCircuit size={22} />
+              <strong>Kontrolle statt blindem Symbolrechnen</strong>
+              <span>Stammfunktionen werden per Rückableitung kontrolliert; bestimmte Integrale erhalten zusätzlich einen numerischen Stabilitätscheck.</span>
+            </article>
+            <article>
+              <Cpu size={22} />
+              <strong>Browser-only Architektur</strong>
+              <span>Keine Server, keine Bezahldienste, kein Backend: React, TypeScript, KaTeX, Plotly und deterministische Mathematik im Browser.</span>
+            </article>
+          </div>
+        </details>
+      </section>
     </main>
   );
 }
@@ -106,6 +114,7 @@ function renderModuleTitle(id: RouteId, title: string) {
   return (
     <>
       <span className="title-line title-line--keep">Funktionsplotter&nbsp;&amp;</span>
+      {" "}
       <span className="title-line">Kurvendiskussion</span>
     </>
   );
