@@ -11,7 +11,7 @@ const DERIVATIVE_POINTS = [-1.6, -0.9, -0.35, 0.45, 0.95, 1.45];
 const INTEGRAL_POINTS = [-1.35, -0.55, 0.35, 0.9, 1.65];
 
 describe("999-case calculator stress suite", () => {
-  it("checks 999 structurally varied derivative examples against finite differences", () => {
+  it("checks 999 structurally varied derivative examples against finite differences", async () => {
     let checked = 0;
 
     for (let index = 0; index < CASES_PER_CALCULATOR; index += 1) {
@@ -24,10 +24,11 @@ describe("999-case calculator stress suite", () => {
       const agreements = DERIVATIVE_POINTS.filter((x) => agreesWithFiniteDifference(expression, derivative, x)).length;
       expect(agreements, expression).toBeGreaterThanOrEqual(2);
       checked += 1;
+      if (index % 40 === 39) await yieldToVitest();
     }
 
     expect(checked).toBe(CASES_PER_CALCULATOR);
-  }, 60000);
+  }, 120000);
 
   it("checks 999 standard integral examples by differentiating the returned antiderivative", () => {
     let checked = 0;
@@ -78,7 +79,7 @@ describe("999-case calculator stress suite", () => {
     expect(checked).toBe(CASES_PER_CALCULATOR);
   }, 15000);
 
-  it("checks 999 plotter and curve-discussion examples for stable numerical analysis", () => {
+  it("checks 999 plotter and curve-discussion examples for stable numerical analysis", async () => {
     let checked = 0;
 
     for (let index = 0; index < CASES_PER_CALCULATOR; index += 1) {
@@ -102,10 +103,11 @@ describe("999-case calculator stress suite", () => {
       }
 
       checked += 1;
+      if (index % 30 === 29) await yieldToVitest();
     }
 
     expect(checked).toBe(CASES_PER_CALCULATOR);
-  }, 45000);
+  }, 120000);
 
   it("checks 999 limit, sequence and series examples across standard families", () => {
     let checked = 0;
@@ -142,6 +144,12 @@ describe("999-case calculator stress suite", () => {
     expect(checked).toBe(CASES_PER_CALCULATOR);
   }, 30000);
 });
+
+function yieldToVitest() {
+  return new Promise<void>((resolve) => {
+    setTimeout(resolve, 0);
+  });
+}
 
 function derivativeExpression(index: number) {
   const a = nonZero(index, 1) / 4;

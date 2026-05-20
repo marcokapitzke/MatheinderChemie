@@ -1425,10 +1425,18 @@ input[type="range"] {
   .home-hero {
     min-height: auto;
     padding: 3.5rem 0 3rem;
+    overflow: hidden;
   }
 
   .hero-grid {
     gap: 2.2rem;
+    min-width: 0;
+  }
+
+  .hero-text,
+  .water-orbital-scene {
+    min-width: 0;
+    max-width: 100%;
   }
 
   .hero-text h1,
@@ -1459,12 +1467,50 @@ input[type="range"] {
 
   .water-orbital-scene {
     min-height: 460px;
+    overflow: hidden;
   }
 
   .water-model-canvas {
     inset: -2% -16% 4%;
     width: 132%;
     height: 98%;
+  }
+
+  input[type="range"] {
+    min-height: 44px;
+  }
+
+  .solution-details summary,
+  .examples summary {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .math-formula--block {
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .plot-panel .modebar {
+    max-width: calc(100% - 16px);
+    transform: scale(1.06);
+    transform-origin: top right;
+  }
+
+  .plot-panel .modebar-btn {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+  }
+
+  .plot-panel .modebar-btn svg {
+    width: 18px !important;
+    height: 18px !important;
   }
 
   .purpose-band {
@@ -1494,6 +1540,12 @@ input[type="range"] {
     align-items: flex-start;
     justify-content: center;
   }
+
+  .footer-inner a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
 }
 
 @media (max-width: 460px) {
@@ -1512,5 +1564,11 @@ input[type="range"] {
 
   .water-orbital-scene {
     min-height: 420px;
+  }
+
+  .water-model-canvas {
+    inset: 0 -8% 4%;
+    width: 116%;
+    height: 94%;
   }
 }
