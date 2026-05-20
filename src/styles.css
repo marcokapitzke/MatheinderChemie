@@ -1140,6 +1140,26 @@ input[type="range"] {
   padding-left: 1rem;
 }
 
+.formula-point-list {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.formula-point-list li {
+  border: 1px solid var(--blue-soft);
+  border-radius: 6px;
+  background: #f8fbff;
+  padding: 0.58rem 0.65rem;
+}
+
+.formula-point-list .math-formula {
+  color: var(--blue);
+  font-size: 0.96rem;
+}
+
 .interval-grid,
 .range-grid {
   display: grid;

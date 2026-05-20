@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { plotExamples, type RouteId } from "../data/modules";
-import { analyzeFunction, describePoint } from "../lib/numericAnalysis";
+import { analyzeFunction, type PointResult } from "../lib/numericAnalysis";
 import { expressionToTex, formatNumber } from "../lib/mathCore";
 import { useNotation } from "../lib/notationContext";
 import { CalculatorLayout, ExampleButtons, FormulaPreview } from "./CalculatorLayout";
@@ -81,9 +81,9 @@ export function FunctionPlotter({ onNavigate }: Props) {
           </section>
 
           <section className="analysis-grid">
-            <AnalysisList title="Nullstellen" items={result.roots.map(describePoint)} />
-            <AnalysisList title="Extrempunkte" items={result.extrema.map(describePoint)} />
-            <AnalysisList title="Wendepunkte" items={result.inflections.map(describePoint)} />
+            <AnalysisList title="Nullstellen" points={result.roots} />
+            <AnalysisList title="Extrempunkte" points={result.extrema} />
+            <AnalysisList title="Wendepunkte" points={result.inflections} />
           </section>
 
           <section className="result-card">
@@ -120,14 +120,16 @@ export function FunctionPlotter({ onNavigate }: Props) {
   );
 }
 
-function AnalysisList({ title, items }: { title: string; items: string[] }) {
+function AnalysisList({ title, points }: { title: string; points: PointResult[] }) {
   return (
     <article className="result-card">
       <p className="eyebrow">{title}</p>
-      {items.length ? (
-        <ul className="plain-list">
-          {items.map((item) => (
-            <li key={item}>{item}</li>
+      {points.length ? (
+        <ul className="formula-point-list">
+          {points.map((point) => (
+            <li key={`${point.kind}-${point.x}-${point.y}`}>
+              <MathFormula tex={pointToTex(point)} />
+            </li>
           ))}
         </ul>
       ) : (
@@ -135,4 +137,8 @@ function AnalysisList({ title, items }: { title: string; items: string[] }) {
       )}
     </article>
   );
+}
+
+function pointToTex(point: PointResult) {
+  return `\\text{${point.kind}:}\\quad x\\approx ${formatNumber(point.x)},\\; f(x)\\approx ${formatNumber(point.y)}`;
 }

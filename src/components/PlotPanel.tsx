@@ -45,9 +45,12 @@ export function PlotPanel({
   showEndLabels = true
 }: PlotPanelProps) {
   const ref = useRef<HTMLDivElement | null>(null);
+  const renderId = useRef(0);
 
   useEffect(() => {
     let active = true;
+    const currentRenderId = renderId.current + 1;
+    renderId.current = currentRenderId;
 
     async function render() {
       if (!ref.current) return;
@@ -100,7 +103,7 @@ export function PlotPanel({
         height,
         margin: { l: 62, r: 42, t: title ? 58 : 30, b: 62 },
         paper_bgcolor: "rgba(0,0,0,0)",
-        plot_bgcolor: "rgba(255,255,255,0.74)",
+        plot_bgcolor: "rgba(0,0,0,0)",
         font: { family: "Inter, system-ui, sans-serif", color: "#263247" },
         hovermode: "closest",
         dragmode: "pan",
@@ -111,7 +114,7 @@ export function PlotPanel({
           range: ranges.x,
           showgrid: true,
           zeroline: false,
-          gridcolor: "#dbe4ef",
+          gridcolor: "rgba(167, 181, 202, 0.62)",
           griddash: "dot",
           linecolor: "rgba(9,33,63,0)",
           linewidth: 0,
@@ -128,7 +131,7 @@ export function PlotPanel({
           spikethickness: 1,
           minor: {
             showgrid: true,
-            gridcolor: "rgba(216, 224, 235, 0.54)",
+            gridcolor: "rgba(167, 181, 202, 0.32)",
             griddash: "dot"
           }
         },
@@ -137,7 +140,7 @@ export function PlotPanel({
           range: ranges.y,
           showgrid: true,
           zeroline: false,
-          gridcolor: "#dbe4ef",
+          gridcolor: "rgba(167, 181, 202, 0.62)",
           griddash: "dot",
           linecolor: "rgba(9,33,63,0)",
           linewidth: 0,
@@ -156,7 +159,7 @@ export function PlotPanel({
           scaleratio: equalAspect ? 1 : undefined,
           minor: {
             showgrid: true,
-            gridcolor: "rgba(216, 224, 235, 0.54)",
+            gridcolor: "rgba(167, 181, 202, 0.32)",
             griddash: "dot"
           }
         },
@@ -192,9 +195,10 @@ export function PlotPanel({
     render();
     return () => {
       active = false;
-      if (ref.current) {
+      const element = ref.current;
+      if (element) {
         import("plotly.js-dist-min").then(({ default: Plotly }) => {
-          if (ref.current) Plotly.purge(ref.current);
+          if (renderId.current === currentRenderId) Plotly.purge(element);
         });
       }
     };
