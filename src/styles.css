@@ -517,7 +517,7 @@ a {
 
 .module-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   border-top: 1px solid var(--line-strong);
   border-left: 1px solid var(--line-strong);
 }
@@ -539,6 +539,10 @@ a {
   overflow: hidden;
   isolation: isolate;
   transition: transform 220ms ease, background 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.module-card--plotter {
+  grid-column: span 2;
 }
 
 .module-card::before {
@@ -635,6 +639,18 @@ a {
   font-family: var(--serif);
   font-size: 1.42rem;
   line-height: 1.12;
+}
+
+.title-line {
+  display: block;
+}
+
+.title-line--keep {
+  white-space: nowrap;
+}
+
+.module-heading--plotter {
+  font-size: clamp(2.55rem, 4.8vw, 5.45rem);
 }
 
 .module-card small {
@@ -1326,6 +1342,10 @@ input[type="range"] {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .module-card--plotter {
+    grid-column: auto;
+  }
+
   .hero-grid,
   .calculator-grid {
     grid-template-columns: 1fr;
@@ -1353,6 +1373,10 @@ input[type="range"] {
   .hero-text h1,
   .module-hero h1 {
     font-size: clamp(2.25rem, 12vw, 3.6rem);
+  }
+
+  .module-hero .module-heading--plotter {
+    font-size: clamp(2.1rem, 10vw, 3.25rem);
   }
 
   .hero-actions,

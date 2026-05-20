@@ -81,10 +81,15 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
         <div className="module-grid">
           {modules.map((module, index) => (
-            <button className="module-card" type="button" key={module.id} onClick={() => onNavigate(module.id)}>
+            <button
+              className={`module-card module-card--${module.id}`}
+              type="button"
+              key={module.id}
+              onClick={() => onNavigate(module.id)}
+            >
               <span className="card-index">{String(index + 1).padStart(2, "0")}</span>
               <span className="module-eyebrow">{module.eyebrow}</span>
-              <h3>{module.title}</h3>
+              <h3 className={module.id === "plotter" ? "module-title--plotter" : undefined}>{renderModuleTitle(module.id, module.title)}</h3>
               <p>{module.description}</p>
               <small>{module.chapter}</small>
             </button>
@@ -92,5 +97,16 @@ export function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
     </main>
+  );
+}
+
+function renderModuleTitle(id: RouteId, title: string) {
+  if (id !== "plotter") return title;
+
+  return (
+    <>
+      <span className="title-line title-line--keep">Funktionsplotter&nbsp;&amp;</span>
+      <span className="title-line">Kurvendiskussion</span>
+    </>
   );
 }

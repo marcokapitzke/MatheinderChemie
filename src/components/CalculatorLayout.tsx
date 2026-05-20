@@ -38,7 +38,7 @@ export function CalculatorLayout({
           Zur Startseite
         </button>
         <p className="eyebrow">{eyebrow}</p>
-        <h1>{title}</h1>
+        <h1 className={route === "plotter" ? "module-heading--plotter" : undefined}>{renderPageTitle(route, title)}</h1>
         <p className="hero-copy">{description}</p>
         {chapterUrl ? (
           <a className="chapter-chip chapter-chip--link" href={chapterUrl} target="_blank" rel="noreferrer">
@@ -71,6 +71,17 @@ export function CalculatorLayout({
         </aside>
       </section>
     </main>
+  );
+}
+
+function renderPageTitle(route: RouteId, title: string) {
+  if (route !== "plotter") return title;
+
+  return (
+    <>
+      <span className="title-line title-line--keep">Funktionsplotter&nbsp;&amp;</span>
+      <span className="title-line">Kurvendiskussion</span>
+    </>
   );
 }
 
