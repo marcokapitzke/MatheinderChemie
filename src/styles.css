@@ -280,37 +280,6 @@ a {
   pointer-events: none;
 }
 
-.water-model-copy {
-  position: absolute;
-  left: 3%;
-  right: 0;
-  bottom: 2.4rem;
-  display: grid;
-  gap: 0.45rem;
-  max-width: 410px;
-  color: rgba(248, 251, 255, 0.76);
-}
-
-.water-model-copy > span {
-  width: fit-content;
-  border: 1px solid rgba(255, 202, 215, 0.32);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #ffffff;
-  padding: 0.32rem 0.62rem;
-  font-size: 0.82rem;
-  font-weight: 850;
-}
-
-.water-model-copy .math-formula {
-  color: #ffffff;
-  font-size: 1.05rem;
-}
-
-.water-model-copy small {
-  color: rgba(248, 251, 255, 0.68);
-}
-
 .purpose-band {
   display: grid;
   grid-template-columns: minmax(300px, 0.58fr) minmax(260px, 0.42fr);
@@ -1404,13 +1373,6 @@ input[type="range"] {
     inset: -2% -16% 4%;
     width: 132%;
     height: 98%;
-  }
-
-  .water-model-copy {
-    left: 0;
-    right: 0;
-    bottom: 0.3rem;
-    max-width: 360px;
   }
 
   .purpose-band {

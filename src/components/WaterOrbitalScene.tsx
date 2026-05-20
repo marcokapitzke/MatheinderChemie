@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { MathFormula } from "./MathFormula";
 
 type Electron = {
   object: THREE.Object3D;
@@ -195,11 +194,6 @@ export function WaterOrbitalScene() {
   return (
     <div className="water-orbital-scene" ref={mountRef} aria-label="Dreidimensionales Wassermolekül mit Elektronenpunkten">
       <canvas className="water-model-canvas" ref={canvasRef} aria-hidden="true" />
-      <div className="water-model-copy">
-        <span>H₂O-Modell</span>
-        <MathFormula tex={"\\angle\\mathrm{HOH}\\approx104{,}5^{\\circ}"} />
-        <small>10 Elektronenpunkte, Bindungswinkel und Molekülgeometrie als rotierende mathematische Szene.</small>
-      </div>
     </div>
   );
 }
